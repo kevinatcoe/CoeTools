@@ -2154,8 +2154,6 @@ namespace CoeTools
     /// <summary>
     /// 
     /// </summary>
-
-
     public class SqlTable
     {
         #region Variables
@@ -2654,6 +2652,24 @@ namespace CoeTools
             return resultString.ToString();
         }
         #endregion Methods
+    }
+    public static class SqlTools
+    {
+        public static string ColumnList(string[] columnNames, string[] columnDisplayNames)
+        {
+            StringBuilder sb = new StringBuilder();
+            string column = "";
+            if (columnNames != null && columnDisplayNames != null)
+            {
+                sb.Clear();
+                for(int columnIndex = 0; columnIndex < columnNames.Length; columnIndex++)
+                {
+                    column = $"[{columnNames[columnIndex]}] as '{columnDisplayNames[columnIndex]}',"; 
+                    sb.Append(column);
+                }
+            }
+            return sb.ToString().RemoveLastChar(1);
+        }
     }
     public class Strings
     {
